@@ -19,64 +19,64 @@ public class @InputMaster : IInputActionCollection, IDisposable
             ""id"": ""7a95da69-e004-4756-bd4f-ce425d5d5bba"",
             ""actions"": [
                 {
-                    ""name"": ""Left Flipper"",
+                    ""name"": ""Click Position"",
                     ""type"": ""PassThrough"",
-                    ""id"": ""86c317ab-2b10-472b-8a98-89676b9eac3b"",
+                    ""id"": ""ad815077-538a-47e2-a453-5d3f33dd6b69"",
+                    ""expectedControlType"": ""Analog"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Click"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""c26c9952-0718-4640-9de1-34f682f4044d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)""
-                },
-                {
-                    ""name"": ""Right Flipper"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""f828c83c-84e8-4dc7-a815-41605a6bbe61"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""2ced12fc-352d-414b-b2a4-98813004f78d"",
+                    ""id"": ""398c69ae-7cb9-4ebf-b4c7-28822df19265"",
                     ""path"": ""<Touchscreen>/position/x"",
-                    ""interactions"": """",
-                    ""processors"": ""AxisDeadzone(min=0.01,max=0.5)"",
-                    ""groups"": """",
-                    ""action"": ""Left Flipper"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""296a99ab-3545-4a87-a3e0-7411af0e0ce4"",
-                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Left Flipper"",
+                    ""action"": ""Click Position"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""81c35444-1499-4953-90a2-a2d7d0b76205"",
-                    ""path"": ""<Touchscreen>/position/x"",
-                    ""interactions"": """",
-                    ""processors"": ""AxisDeadzone(min=0.5,max=1)"",
-                    ""groups"": """",
-                    ""action"": ""Right Flipper"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4ac05301-3377-49c0-bde6-43c0fadb9d47"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""id"": ""27d99209-4ba3-47fc-bdfb-7401e8c280ec"",
+                    ""path"": ""<Mouse>/position/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Right Flipper"",
+                    ""action"": ""Click Position"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""830daf49-53f3-4577-8c63-84611bb8e4d9"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b80d40b1-45ef-4b04-9b1d-555cd1d9d6cd"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -87,8 +87,8 @@ public class @InputMaster : IInputActionCollection, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_LeftFlipper = m_Player.FindAction("Left Flipper", throwIfNotFound: true);
-        m_Player_RightFlipper = m_Player.FindAction("Right Flipper", throwIfNotFound: true);
+        m_Player_ClickPosition = m_Player.FindAction("Click Position", throwIfNotFound: true);
+        m_Player_Click = m_Player.FindAction("Click", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -138,14 +138,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_LeftFlipper;
-    private readonly InputAction m_Player_RightFlipper;
+    private readonly InputAction m_Player_ClickPosition;
+    private readonly InputAction m_Player_Click;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
         public PlayerActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
-        public InputAction @LeftFlipper => m_Wrapper.m_Player_LeftFlipper;
-        public InputAction @RightFlipper => m_Wrapper.m_Player_RightFlipper;
+        public InputAction @ClickPosition => m_Wrapper.m_Player_ClickPosition;
+        public InputAction @Click => m_Wrapper.m_Player_Click;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -155,29 +155,29 @@ public class @InputMaster : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
-                @LeftFlipper.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftFlipper;
-                @LeftFlipper.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftFlipper;
-                @LeftFlipper.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLeftFlipper;
-                @RightFlipper.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightFlipper;
-                @RightFlipper.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightFlipper;
-                @RightFlipper.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRightFlipper;
+                @ClickPosition.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClickPosition;
+                @ClickPosition.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClickPosition;
+                @ClickPosition.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClickPosition;
+                @Click.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClick;
+                @Click.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClick;
+                @Click.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClick;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @LeftFlipper.started += instance.OnLeftFlipper;
-                @LeftFlipper.performed += instance.OnLeftFlipper;
-                @LeftFlipper.canceled += instance.OnLeftFlipper;
-                @RightFlipper.started += instance.OnRightFlipper;
-                @RightFlipper.performed += instance.OnRightFlipper;
-                @RightFlipper.canceled += instance.OnRightFlipper;
+                @ClickPosition.started += instance.OnClickPosition;
+                @ClickPosition.performed += instance.OnClickPosition;
+                @ClickPosition.canceled += instance.OnClickPosition;
+                @Click.started += instance.OnClick;
+                @Click.performed += instance.OnClick;
+                @Click.canceled += instance.OnClick;
             }
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
     public interface IPlayerActions
     {
-        void OnLeftFlipper(InputAction.CallbackContext context);
-        void OnRightFlipper(InputAction.CallbackContext context);
+        void OnClickPosition(InputAction.CallbackContext context);
+        void OnClick(InputAction.CallbackContext context);
     }
 }

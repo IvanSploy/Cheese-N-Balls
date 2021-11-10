@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.InputSystem.InputAction;
 
 [RequireComponent(typeof(HingeJoint2D))]
 public class FlipperController : MonoBehaviour
@@ -11,16 +12,8 @@ public class FlipperController : MonoBehaviour
     private void Awake()
     {
        m_input = new InputMaster();
-        if (isLeftFlipper)
-        {
-            m_input.Player.LeftFlipper.started += ctx => OnLeftFlipper();
-            m_input.Player.LeftFlipper.canceled += ctx => OnExitLeftFlipper();
-        }
-        else
-        {
-            m_input.Player.RightFlipper.started += ctx => OnRightFlipper();
-            m_input.Player.RightFlipper.canceled += ctx => OnExitRightFlipper();
-        }
+       m_input.Player.Click.started += ctx => OnFlipper(ctx);
+        m_input.Player.Click.canceled += ctx => OnExitFlipper();
     }
 
     private void OnEnable()
@@ -33,19 +26,21 @@ public class FlipperController : MonoBehaviour
         m_input.Disable();
     }
 
-    private void OnLeftFlipper()
+    private void OnFlipper(CallbackContext ctx)
     {
-        GetComponent<HingeJoint2D>().useMotor = true;
+        float f = m_input.Player.ClickPosition.ReadValue<float>();
+        f /= Camera.main.pixelWidth;
+        Debug.Log(f);
+        if (f < 0.5f)
+        {
+            if(isLeftFlipper) GetComponent<HingeJoint2D>().useMotor = true;
+        }
+        else
+        {
+            if (!isLeftFlipper) GetComponent<HingeJoint2D>().useMotor = true;
+        }
     }
-    private void OnExitLeftFlipper()
-    {
-        GetComponent<HingeJoint2D>().useMotor = false;
-    }
-    private void OnRightFlipper()
-    {
-        GetComponent<HingeJoint2D>().useMotor = true;
-    }
-    private void OnExitRightFlipper()
+    private void OnExitFlipper()
     {
         GetComponent<HingeJoint2D>().useMotor = false;
     }
