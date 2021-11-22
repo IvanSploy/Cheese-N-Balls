@@ -30,7 +30,6 @@ public class FlipperController : MonoBehaviour
     {
         float f = m_input.Player.ClickPosition.ReadValue<float>();
         f /= Camera.main.pixelWidth;
-        Debug.Log(f);
         if (f < 0.5f)
         {
             if(isLeftFlipper) GetComponent<HingeJoint2D>().useMotor = true;
