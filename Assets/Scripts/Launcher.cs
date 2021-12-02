@@ -11,18 +11,16 @@ public class Launcher : MonoBehaviour
     private InputMaster m_input;
     private Vector3 pos;
     private Vector3 pos2;
+    private GameObject launcherTrigger;
 
     private void Awake()
     {
+        launcherTrigger = GameObject.Find("TriggerLauncher");
         pos = transform.localScale;
         pos2 = new Vector3(transform.localScale.x, transform.localScale.y - 2f, transform.localScale.z);
         m_input = new InputMaster();
         m_input.Player.Click.started += ctx => OnLauncher(ctx);
         m_input.Player.Click.canceled += ctx => OnExitLauncher();
-    }
-    void Start()
-    {
-
     }
 
     void Update()
@@ -44,6 +42,7 @@ public class Launcher : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if(launcherTrigger.GetComponent<LauncherTrigger>().close) return;
         if (isActive)
         {
             fuerza = power;

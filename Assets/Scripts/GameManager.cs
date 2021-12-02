@@ -10,11 +10,13 @@ public class GameManager : MonoBehaviour
     //Editor
     public GameObject player;
     public Transform playerSpawn;
+    private GameObject launcherTrigger;
 
     // Start is called before the first frame update
     void Awake()
     {
         instance = this;
+        launcherTrigger = GameObject.Find("TriggerLauncher");
     }
 
     private void Start()
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     public void DoNewBall(GameObject previousBall = null)
     {
+        launcherTrigger.GetComponent<LauncherTrigger>().resetTrigger();
         if (previousBall) Destroy(previousBall);
         Instantiate(player, playerSpawn.position, Quaternion.identity);
     }
