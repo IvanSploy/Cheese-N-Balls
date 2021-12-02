@@ -8,6 +8,7 @@ public class DamageCheeseBehaviour : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("On Trigger");
         HealthBehaviour.instance.Health -= 1;
         if (collision.tag == "Player")
         {
