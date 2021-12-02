@@ -35,7 +35,10 @@ public class Topo : MonoBehaviour
 
     IEnumerator TiempoAleatorio()
     {
-        randomNumber = Random.Range(2, 4);
+        if (topoDescubierto)
+            randomNumber = Random.Range(4, 8);
+        else
+            randomNumber = Random.Range(2, 4);
         yield return new WaitForSeconds(randomNumber);
         topoDescubierto = !topoDescubierto;
         if (topoDescubierto)
