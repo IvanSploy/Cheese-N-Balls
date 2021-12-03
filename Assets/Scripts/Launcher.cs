@@ -83,8 +83,6 @@ public class Launcher : MonoBehaviour
     }
     private void OnLauncher(CallbackContext ctx)
     {
-        float f = m_input.Player.ClickPosition.ReadValue<float>();
-        f /= Camera.main.pixelWidth;
         isActive = true;
     }
     private void OnExitLauncher()

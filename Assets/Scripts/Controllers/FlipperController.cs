@@ -6,6 +6,7 @@ using static UnityEngine.InputSystem.InputAction;
 [RequireComponent(typeof(HingeJoint2D))]
 public class FlipperController : MonoBehaviour
 {
+    public bool isActive = true;
     public bool isLeftFlipper;
     private InputMaster m_input;
     private GameObject launcherTrigger;
@@ -13,8 +14,8 @@ public class FlipperController : MonoBehaviour
     private void Awake()
     {
         launcherTrigger = GameObject.Find("TriggerLauncher");
-       m_input = new InputMaster();
-       m_input.Player.Click.started += ctx => OnFlipper(ctx);
+        m_input = new InputMaster();
+        m_input.Player.Click.started += ctx => OnFlipper(ctx);
         m_input.Player.Click.canceled += ctx => OnExitFlipper();
     }
 
@@ -30,7 +31,10 @@ public class FlipperController : MonoBehaviour
 
     private void OnFlipper(CallbackContext ctx)
     {
-        if(!launcherTrigger.GetComponent<LauncherTrigger>().close) return;
+        if(!isActive) return;
+        Debug.Log("Flipper");
+        if(launcherTrigger)
+            if(!launcherTrigger.GetComponent<LauncherTrigger>().close) return;
         float f = m_input.Player.ClickPosition.ReadValue<float>();
         f /= Camera.main.pixelWidth;
         if (f < 0.5f)

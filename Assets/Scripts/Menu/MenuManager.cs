@@ -71,6 +71,22 @@ public class MenuManager : MonoBehaviour
         menuButtons.SetActive(false);
         creditsButtons.SetActive(true);
         camera.transform.DOMoveY(5, 2);
+        DisableFlippers(false);
+    }
+
+    public void DisableFlippers(bool activar)
+    {
+        if(activar){
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().gravityScale = 1f;
+        } 
+        else
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().gravityScale = 0f;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().velocity = new Vector2(0f,0f);
+        }
+        FlipperController[] flippers = FindObjectsOfType<FlipperController>();
+        for(int i = 0; i < flippers.Length; i++)
+            flippers[i].isActive = activar;
     }
 
 
@@ -83,6 +99,7 @@ public class MenuManager : MonoBehaviour
         creditsButtons.SetActive(false);
         menuButtons.SetActive(true);
         camera.transform.DOMoveY(0, 2);
+        DisableFlippers(true);
 
     }
 
@@ -91,7 +108,7 @@ public class MenuManager : MonoBehaviour
         optionsButtons.SetActive(false);
         menuButtons.SetActive(true);
         optionsMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-1298, 0), 2);
-
+        DisableFlippers(true);
     }
 
 
@@ -101,6 +118,7 @@ public class MenuManager : MonoBehaviour
         menuButtons.SetActive(false);
         optionsButtons.SetActive(true);
         optionsMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 2);
+        DisableFlippers(false);
     }
 
 
