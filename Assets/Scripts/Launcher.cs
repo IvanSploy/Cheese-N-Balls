@@ -5,7 +5,6 @@ using System.Collections;
 public class Launcher : MonoBehaviour
 {
     public bool isActive = false;
-    public float time = 0f;
     public float power = 0.01f;
     public float fuerza;
     private InputMaster m_input;
@@ -17,7 +16,7 @@ public class Launcher : MonoBehaviour
     {
         launcherTrigger = GameObject.Find("TriggerLauncher");
         pos = transform.localScale;
-        pos2 = new Vector3(transform.localScale.x, transform.localScale.y - 2f, transform.localScale.z);
+        pos2 = new Vector3(transform.localScale.x, transform.localScale.y / 2f, transform.localScale.z);
         m_input = new InputMaster();
         m_input.Player.Click.started += ctx => OnLauncher(ctx);
         m_input.Player.Click.canceled += ctx => OnExitLauncher();
@@ -25,19 +24,16 @@ public class Launcher : MonoBehaviour
 
     void Update()
     {
+        
         if (isActive)
         {
-            time += Time.deltaTime;
-        }
-        if (isActive)
-        {
-            if(pos2 != transform.localScale)
+            if(pos2.y < transform.localScale.y)
                 transform.localScale =  new Vector3(transform.localScale.x, pos.y - (power/100) * 2 , transform.localScale.z);
         }
         else
         {
-            if(pos != transform.localScale)
-                 transform.localScale =  new Vector3(transform.localScale.x, pos2.y + (2 - (power/100) * 2) , transform.localScale.z);
+            if(pos.y > transform.localScale.y)
+                 transform.localScale =  new Vector3(transform.localScale.x, pos2.y + (1 - (power/100) * 2) , transform.localScale.z);
         }
     }
     private void FixedUpdate()
@@ -63,14 +59,16 @@ public class Launcher : MonoBehaviour
                     power = 0.01f;
             }
         }
+       
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision.gameObject.name);
         //if (collision.gameObject.name )
-        if (!isActive && fuerza != 100) collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * fuerza * 5);
-        else if (!isActive) collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * fuerza * 7);
+        if (!isActive && fuerza != 100) collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * fuerza * 0.8f);
+        else if (!isActive) collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * fuerza * 1f);
+    
     }
     private void OnEnable()
     {
@@ -88,6 +86,5 @@ public class Launcher : MonoBehaviour
     private void OnExitLauncher()
     {
         isActive = false;
-        time = 0;
     }
 }

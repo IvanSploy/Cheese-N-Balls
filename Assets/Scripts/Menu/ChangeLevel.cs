@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class ChangeLevel : MonoBehaviour
 {
-    private void Awake()
+    private MenuManager menuManager;
+
+    void Start()
     {
-        print("lol");
-    }
-    private void OnMouseDown()
-    {
-        print("cambio");
+        menuManager = FindObjectOfType<MenuManager>();
     }
 
+     private void OnTriggerEnter2D(Collider2D collider2D)
+     {
+         Debug.Log("eh");
+         menuManager.LoadLevel();
+     }
 }

@@ -12,12 +12,19 @@ public class Topo : MonoBehaviour
     private int randomNumber;
     private SpriteRenderer spriteRenderer;
     private Collider2D collider;
+
+    private Animator anim;
+
+    private ParticleSystem particleSystem;
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         collider = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         cX = transform.position.x;
+        particleSystem = GetComponentInChildren<ParticleSystem>();
+
         StartCoroutine(TiempoAleatorio());
     }
 
@@ -39,17 +46,32 @@ public class Topo : MonoBehaviour
             randomNumber = Random.Range(4, 8);
         else
             randomNumber = Random.Range(2, 4);
+
+
         yield return new WaitForSeconds(randomNumber);
+
+
         topoDescubierto = !topoDescubierto;
         if (topoDescubierto)
         {
+            
+            particleSystem.Stop();
+            anim.Play("goOutAnim");
+            yield return new WaitForSeconds(0.4f);
+            anim.Play("idleAnim");
+            
+
             collider.enabled = true;
-            spriteRenderer.sprite = imageList[0];
         }
         else
         {
+            anim.Play("goInAnim");
+            yield return new WaitForSeconds(0.4f);
+            anim.Play("underground");
+            
+            particleSystem.Play();
+
             collider.enabled = false;
-            spriteRenderer.sprite = imageList[1];
         }
         StartCoroutine(TiempoAleatorio());
     }
