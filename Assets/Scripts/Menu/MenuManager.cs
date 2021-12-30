@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 using DG.Tweening;
+
 
 public class MenuManager : MonoBehaviour
 {
@@ -14,16 +17,29 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject optionsButtons;
     [SerializeField] GameObject optionsMenu;
 
+    public Slider volumenMusica;
+    public TextMeshProUGUI musicaText;
 
 
     GameObject camera;
+    Rigidbody2D rigid;
+    FlipperController[] flippers;
 
     private void Awake()
     {
         optionsButtons.SetActive(false);
         creditsButtons.SetActive(false);
         camera = FindObjectOfType<Camera>().gameObject;
+        flippers = FindObjectsOfType<FlipperController>();
     }
+
+
+    public void MusicChange()
+    {
+        float numVolume = volumenMusica.value * 100;
+        musicaText.SetText(Mathf.RoundToInt(numVolume).ToString());
+    }
+
 
 
     public int GetCurrentLevel()
@@ -76,22 +92,27 @@ public class MenuManager : MonoBehaviour
 
     public void DisableFlippers(bool activar)
     {
-        if(activar){
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().gravityScale = 1f;
-        } 
+        rigid = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
+        SpriteRenderer renderBola = rigid.GetComponent<SpriteRenderer>();
+        var color = renderBola.color;
+        if (activar)
+        {
+            rigid.gravityScale = 1f;
+            color.a = 1f;
+            renderBola.color = color;
+
+        }
         else
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().gravityScale = 0f;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().velocity = new Vector2(0f,0f);
+            rigid.gravityScale = 0f;
+            rigid.velocity = new Vector2(0f, 0f);
+            color.a = 0.4f;
+            renderBola.color = color;
         }
-        FlipperController[] flippers = FindObjectsOfType<FlipperController>();
-        for(int i = 0; i < flippers.Length; i++)
+
+        for (int i = 0; i < flippers.Length; i++)
             flippers[i].isActive = activar;
     }
-
-
-
-
 
     [ContextMenu("Volver")]
     public void GoToLevelSelectorFromCredits()
