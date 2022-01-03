@@ -64,10 +64,9 @@ public class Launcher : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.name);
-        //if (collision.gameObject.name )
-        if (!isActive && fuerza != 100) collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * fuerza * 0.8f);
-        else if (!isActive) collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * fuerza * 1f);
+        //if (!isActive && fuerza != 100) collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * fuerza * 0.8f);
+        //else
+        if (!isActive) collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * fuerza);
     
     }
     private void OnEnable()
