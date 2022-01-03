@@ -40,6 +40,7 @@ public class FlipperController : MonoBehaviour
         if (f < 0.5f)
         {
             if(isLeftFlipper) GetComponent<HingeJoint2D>().useMotor = true;
+            Debug.Log("Oliwi");
         }
         else
         {
@@ -49,5 +50,6 @@ public class FlipperController : MonoBehaviour
     private void OnExitFlipper()
     {
         GetComponent<HingeJoint2D>().useMotor = false;
+        Debug.Log("Chau");
     }
 }
