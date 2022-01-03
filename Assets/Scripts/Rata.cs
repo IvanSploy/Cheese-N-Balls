@@ -11,10 +11,12 @@ public class Rata : MonoBehaviour
     public float speed;
     private float step;
     private Vector3 nextPos;
+    private GameObject posFinal;
     // Start is called before the first frame update
     void Start()
     {
         collider = GetComponent<Collider2D>();
+        posFinal = FindObjectOfType<DamageCheeseBehaviour>().gameObject;
 
         //
         // A QUE POSICION VA AL EMPEZAR (VARIAS POSIBLES) -- nextPos = posiciones[random entre algunas]

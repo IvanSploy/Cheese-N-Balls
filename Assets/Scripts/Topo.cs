@@ -5,7 +5,7 @@ using UnityEngine;
 public class Topo : MonoBehaviour
 {
     public Sprite[] imageList = new Sprite[2];
-    public GameObject posFinal;
+    private GameObject posFinal;
     private float cX, contador, xSen, step;
     public float anchoCiclo, frecuencia, speed, offset;
     private bool topoDescubierto;
@@ -16,15 +16,18 @@ public class Topo : MonoBehaviour
     private Animator anim;
 
     private ParticleSystem particleSystem;
+    private int desvio;
     // Start is called before the first frame update
     void Start()
     {
+        posFinal = FindObjectOfType<DamageCheeseBehaviour>().gameObject;
         anim = GetComponent<Animator>();
         collider = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         cX = transform.position.x;
         particleSystem = GetComponentInChildren<ParticleSystem>();
-
+        desvio = Random.Range(-1, 1);
+        if (desvio == 0) desvio = 1;
         StartCoroutine(TiempoAleatorio());
     }
 
@@ -35,7 +38,7 @@ public class Topo : MonoBehaviour
             step = speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, posFinal.transform.position, step);
             contador = contador + (frecuencia/100);
-            xSen = Mathf.Sin(contador + offset);
+            xSen = desvio * Mathf.Sin(contador + offset);
             transform.position = new Vector3(cX + (xSen * anchoCiclo), transform.position.y, transform.position.z);
         }
     }
