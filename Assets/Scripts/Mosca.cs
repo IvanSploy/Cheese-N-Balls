@@ -10,6 +10,11 @@ public class Mosca : MonoBehaviour
     public float speed;
     private float step;
 
+    void Start()
+    {
+        posFinal = FindObjectOfType<DamageCheeseBehaviour>().gameObject;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {

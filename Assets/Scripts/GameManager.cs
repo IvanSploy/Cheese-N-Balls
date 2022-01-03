@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public Transform playerSpawn;
     private GameObject launcherTrigger;
+    
 
     // Start is called before the first frame update
     void Awake()
