@@ -25,6 +25,8 @@ public class SpawnBall : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         //GameObject newPlayer = Instantiate(player, spawnPoint.transform.position, Quaternion.identity);
+        player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+
         player.transform.localPosition = spawnPoint.transform.position;
     }
 }

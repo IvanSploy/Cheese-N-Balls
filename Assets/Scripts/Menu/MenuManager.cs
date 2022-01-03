@@ -20,6 +20,9 @@ public class MenuManager : MonoBehaviour
     public Slider volumenMusica;
     public TextMeshProUGUI musicaText;
 
+    public Slider volumenEfectos;
+    public TextMeshProUGUI efectosText;
+
 
     GameObject camera;
     Rigidbody2D rigid;
@@ -38,6 +41,13 @@ public class MenuManager : MonoBehaviour
     {
         float numVolume = volumenMusica.value * 100;
         musicaText.SetText(Mathf.RoundToInt(numVolume).ToString());
+        
+    }
+
+    public void EffectsChange()
+    {
+        float numVolume = volumenEfectos.value * 100;
+        efectosText.SetText(Mathf.RoundToInt(numVolume).ToString());
     }
 
 
@@ -86,7 +96,7 @@ public class MenuManager : MonoBehaviour
     {
         menuButtons.SetActive(false);
         creditsButtons.SetActive(true);
-        camera.transform.DOMoveY(5, 2);
+        camera.transform.DOMoveY(5.6f, 2);
         DisableFlippers(false);
     }
 
