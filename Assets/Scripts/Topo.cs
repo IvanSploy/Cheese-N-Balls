@@ -47,9 +47,7 @@ public class Topo : MonoBehaviour
         else
             randomNumber = Random.Range(2, 4);
 
-
         yield return new WaitForSeconds(randomNumber);
-
 
         topoDescubierto = !topoDescubierto;
         if (topoDescubierto)
