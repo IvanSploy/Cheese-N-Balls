@@ -103,7 +103,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b7779ff8cb469e34f956b4a2b138ccbf, type: 3}
   - {fileID: 21300000, guid: f4d7eb019e4dbeb45b8e019d8d565a93, type: 3}
   - {fileID: 0}
-  posFinal: {fileID: 0}
   anchoCiclo: 2
   frecuencia: 2
   speed: 1
@@ -148,13 +147,13 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!95 &7574090254594109476
 Animator:
   serializedVersion: 3

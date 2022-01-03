@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LauncherTrigger : MonoBehaviour
 {
-    private GameObject secureTrigger;
     public bool close = false;
     private BoxCollider2D collider;
     
@@ -12,17 +11,13 @@ public class LauncherTrigger : MonoBehaviour
     private void Awake()
     {
         collider = GetComponent<BoxCollider2D>();
-        secureTrigger = GameObject.Find("TriggerSecure");
     }
 
     // Update is called once per frame
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (secureTrigger.GetComponent<SecureLauncher>().hasEnter)
-        {
-            close = true;
-            collider.isTrigger = false;
-        }
+        close = true;
+        collider.isTrigger = false;
     }
 
     public void resetTrigger()

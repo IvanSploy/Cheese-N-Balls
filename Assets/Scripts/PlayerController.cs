@@ -7,11 +7,23 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("On Trigger");
-        HealthBehaviour.instance.Health -= 1;
         if (collision.tag == "Enemy")
         {
-            GameManager.instance.DoNewBall(collision.gameObject);
+            DamageEnemy(collision);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Enemy")
+        {
+            DamageEnemy(collision.collider);
+        }
+    }
+
+    public void DamageEnemy(Collider2D enemy)
+    {
+        Destroy(enemy.gameObject);
+        //Incluir particulas de muerte.
     }
 }
