@@ -21,6 +21,6 @@ public class BoosterController : MonoBehaviour
         if (!rb) return;
         ContactPoint2D puntoColision = otherCol.contacts[0];
         rb.velocity = new Vector2();
-        rb.AddForce(puntoColision.normal * puntoColision.normalImpulse * impulse);
+        rb.AddForce(puntoColision.normal * impulse);
     }
 }

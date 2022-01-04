@@ -103,7 +103,7 @@ public class MenuManager : MonoBehaviour
     public void DisableFlippers(bool activar)
     {
         rigid = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
-        SpriteRenderer renderBola = rigid.GetComponent<SpriteRenderer>();
+        SpriteRenderer renderBola = rigid.GetComponentInChildren<SpriteRenderer>();
         var color = renderBola.color;
         if (activar)
         {

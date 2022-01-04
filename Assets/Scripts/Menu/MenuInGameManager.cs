@@ -70,7 +70,8 @@ public class MenuInGameManager : MonoBehaviour
         optionsButtons.SetActive(false);
         pauseButtons.SetActive(true);
         optionsMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-1298, 0), 1.5f);
-       
+        pauseMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 1.5f);
+
     }
 
 
@@ -80,7 +81,8 @@ public class MenuInGameManager : MonoBehaviour
         pauseButtons.SetActive(false);
         optionsButtons.SetActive(true);
         optionsMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 1.5f);
-        
+        pauseMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(1298, 0), 1.5f);
+
     }
 
     public void GoToPause()
@@ -90,6 +92,19 @@ public class MenuInGameManager : MonoBehaviour
         Debug.Log("pausa");
         optionsButtons.SetActive(false);
         optionsMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 1.5f);
+
+    }
+    public void GoToMainMenu()
+    {
+
+        SceneManager.LoadScene(0);
+
+    }
+
+    public void RestartGame()
+    {
+
+        SceneManager.LoadScene(1);
 
     }
 
