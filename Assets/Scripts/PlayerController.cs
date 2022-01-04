@@ -46,11 +46,20 @@ public class PlayerController : MonoBehaviour
         {
             DamageEnemy(collision.collider);
         }
+        if (collision.collider.tag == "Boss")
+        {
+            DamageBoss(collision.collider);
+        }
     }
 
     public void DamageEnemy(Collider2D enemy)
     {
         Destroy(enemy.gameObject);
         //Incluir particulas de muerte.
+    }
+
+    public void DamageBoss(Collider2D enemy)
+    {
+        enemy.GetComponent<Boss>().TakeLife();
     }
 }

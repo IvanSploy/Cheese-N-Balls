@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 8977186658320724704, guid: 0c1481e48af293d4c92f18dbba8eaef8, type: 3}
+  boss: {fileID: 2179800783413408475, guid: 6e0ce8f6034b6974ba1556aeba5cdb23, type: 3}
   playerSpawn: {fileID: 0}
+  bossSpawn: {fileID: 0}
