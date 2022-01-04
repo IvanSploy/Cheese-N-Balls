@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8468493772642795766}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.8585, y: -0.01999998, z: 1}
-  m_LocalScale: {x: 3.9657524, y: 0.61863947, z: 1}
+  m_LocalPosition: {x: 1.86, y: -0.04, z: -1}
+  m_LocalScale: {x: 8.76, y: 3.9739783, z: 1}
   m_Children: []
   m_Father: {fileID: 8468493773228639418}
   m_RootOrder: 0
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.09861231, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 3e7f331732b87b94d924c4dd644366ae, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -118,18 +118,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0024345666, y: 0.0019519515}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.32, y: 0.32}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.3199375, y: 0.18453953}
   m_EdgeRadius: 0
 --- !u!1 &8468493773228639423
 GameObject:
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 8468493773228639421}
   - component: {fileID: 8468493773228639420}
   - component: {fileID: 8468493773228639419}
-  - component: {fileID: 8468493773228639416}
+  - component: {fileID: 7072794955414848152}
   m_Layer: 6
   m_Name: LeftFlipper
   m_TagString: Untagged
@@ -253,7 +253,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.48, y: 0}
+  m_ConnectedAnchor: {x: -0.21215753, y: 0.0050326907}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 500
@@ -262,7 +262,7 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 25
     m_UpperAngle: -12.5
---- !u!114 &8468493773228639416
+--- !u!114 &7072794955414848152
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -271,7 +271,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8468493773228639423}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d06c0404b9069cb45b9822fee0e09318, type: 3}
+  m_Script: {fileID: 11500000, guid: 20bd642e1e635f74e9e2c2c4c75323fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 1
   isLeftFlipper: 1
