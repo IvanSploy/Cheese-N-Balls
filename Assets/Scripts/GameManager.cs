@@ -39,7 +39,8 @@ public class GameManager : MonoBehaviour
 
     public void DoNewBall(GameObject previousBall = null)
     {
-        launcherTrigger.GetComponent<LauncherTrigger>().resetTrigger();
+        if(launcherTrigger)
+            launcherTrigger.GetComponent<LauncherTrigger>().resetTrigger();
         if (previousBall) Destroy(previousBall);
         Instantiate(player, playerSpawn.position, Quaternion.identity);
     }

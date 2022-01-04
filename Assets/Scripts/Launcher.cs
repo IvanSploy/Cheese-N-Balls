@@ -38,7 +38,8 @@ public class Launcher : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(launcherTrigger.GetComponent<LauncherTrigger>().close) return;
+        if (launcherTrigger)
+            if(launcherTrigger.GetComponent<LauncherTrigger>().close) return;
         if (isActive)
         {
             fuerza = power;
