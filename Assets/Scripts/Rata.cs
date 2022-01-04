@@ -5,6 +5,7 @@ using UnityEngine;
 public class Rata : MonoBehaviour
 {
     public GameObject [] posiciones = new GameObject [10];
+    private Animator anim;
     private Collider2D collider;
     private int randomNumber;
     private bool canMove = true;
@@ -13,6 +14,12 @@ public class Rata : MonoBehaviour
     private Vector3 nextPos;
     private GameObject posFinal;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     void Start()
     {
         collider = GetComponent<Collider2D>();
@@ -38,6 +45,14 @@ public class Rata : MonoBehaviour
             StartCoroutine(TiempoAleatorio());
         }
     }
+
+    //USAR ESTE METODO PARA CAMBIAR LA ANIMACION DE LA RATA.
+    public void SetAnimation(bool isMoving)
+    {
+        if(isMoving) anim.Play("RataMoving");
+        else anim.Play("RataIdle");
+    }
+
     IEnumerator TiempoAleatorio()
     {
         randomNumber = Random.Range(2, 4);

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 [RequireComponent(typeof(Animator))]
 public class Boss : MonoBehaviour
@@ -30,7 +32,8 @@ public class Boss : MonoBehaviour
 
     void Start()
     {
-        posFinal = FindObjectOfType<DamageCheeseBehaviour>().gameObject;
+        DOTween.Init();
+        posFinal = GameObject.FindGameObjectWithTag("Queso");
         leftAttack = false;
         currentTime = spawnInterval;
     }
@@ -52,7 +55,7 @@ public class Boss : MonoBehaviour
                     leftAttack = true;
                     anim.Play("IdleLeft");
                 }
-                StartCoroutine(DoDelayedSpawn(anim.GetCurrentAnimatorStateInfo(0).length));
+                StartCoroutine(DoDelayedSpawn(anim.GetCurrentAnimatorStateInfo(0).length-0.1f));
                 currentTime = 0;
             }
         }
@@ -62,7 +65,8 @@ public class Boss : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         //Aquí se spawnea un enemigo.
-        Debug.Log("Spawneando Enemigo");
+        Camera.main.DOShakePosition(1, 0.2f, 10, 20);
+        EnemiesManager.instance.SpawnRandomEnemy();
     }
 
     // Update is called once per frame
@@ -82,10 +86,23 @@ public class Boss : MonoBehaviour
 
     public void TakeLife()
     {
-        if(--lifeCount <= 0)
+        //Quitar Vida
+        if (state == BossState.NORMAL)
         {
-            //Entrar en modo duelo.
-            Destroy(gameObject);
+            if (--lifeCount <= 0)
+            {
+                SceneManager.LoadScene(2);
+            }
+        }
+        //Derrotar Boss
+        else
+        {
+            PersistentData.instance.bossEliminado = true;
+            //Menu Victoria
+            if (Duel.instance)
+                Duel.instance.GameOver();
+            else
+                Debug.LogWarning("Duelo requerido");
         }
     }
 }

@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MenuScene.unity
+    guid: ca5531af73bd9d04288d303a39d7cf64
+  - enabled: 1
     path: Assets/Scenes/PaintballPruebas.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Duelo.unity
+    guid: 0d15def0b2bbdbe49b45b3524b9e3092
   m_configObjects: {}

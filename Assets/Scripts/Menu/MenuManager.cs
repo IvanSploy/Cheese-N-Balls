@@ -9,7 +9,7 @@ using DG.Tweening;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] private int currentLevel = 0;
+    [SerializeField] private int currentLevel = 1;
     [SerializeField] private int levelNum;
 
     [SerializeField] GameObject menuButtons;
