@@ -59,7 +59,7 @@ public class MenuManager : MonoBehaviour
 
     public void SetCurrentLevel(int l)
     {
-        currentLevel = l;
+        currentLevel = 1;
     }
 
     public void IncreaseLevel()
