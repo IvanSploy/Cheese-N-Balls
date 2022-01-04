@@ -11,6 +11,7 @@ public class MenuInGameManager : MonoBehaviour
 {
     
     [SerializeField] GameObject pauseButton;
+    [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject pauseButtons;
     [SerializeField] GameObject optionsMenu;
     [SerializeField] GameObject optionsButtons;
@@ -27,25 +28,25 @@ public class MenuInGameManager : MonoBehaviour
 
     private void Awake()
     {
+        pauseButton.SetActive(true);
         pauseButtons.SetActive(false);
+        optionsButtons.SetActive(false);
         
     }
 
 
     public void MusicChange()
     {
-        float numVolume = volumenMusica.value * 100;
+        float numVolume = volumenMusica.value;
         musicaText.SetText(Mathf.RoundToInt(numVolume).ToString());
         
     }
 
     public void EffectsChange()
     {
-        float numVolume = volumenEfectos.value * 100;
+        float numVolume = volumenEfectos.value;
         efectosText.SetText(Mathf.RoundToInt(numVolume).ToString());
     }
-
- 
 
 
     public void StopGame(bool activar)
@@ -59,8 +60,8 @@ public class MenuInGameManager : MonoBehaviour
     {
         pauseButtons.SetActive(false);
         pauseButton.SetActive(true);
-        
-        
+        pauseMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(1298, 0), 1.5f);
+        StopGame(false);
 
     }
 
@@ -68,7 +69,7 @@ public class MenuInGameManager : MonoBehaviour
     {
         optionsButtons.SetActive(false);
         pauseButtons.SetActive(true);
-        optionsMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-1298, 0), 2);
+        optionsMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-1298, 0), 1.5f);
        
     }
 
@@ -78,8 +79,18 @@ public class MenuInGameManager : MonoBehaviour
     {
         pauseButtons.SetActive(false);
         optionsButtons.SetActive(true);
-        optionsMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 2);
+        optionsMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 1.5f);
         
+    }
+
+    public void GoToPause()
+    {
+        StopGame(true);
+        pauseButtons.SetActive(true);
+        Debug.Log("pausa");
+        optionsButtons.SetActive(false);
+        optionsMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 1.5f);
+
     }
 
 
