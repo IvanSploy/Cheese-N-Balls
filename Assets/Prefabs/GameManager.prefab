@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 412863458704381578}
   - component: {fileID: 412863458704381581}
+  - component: {fileID: 1071820525428301510}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -43,7 +44,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb7d447dda427ae4ba154b5843c06c34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BOSS_POINTS_LIMIT: 100
+  FLY_POINTS: 5
+  TOPO_POINTS: 15
+  RATA_POINTS: 40
+  BOSS_POINTS: 1000
   player: {fileID: 8977186658320724704, guid: 0c1481e48af293d4c92f18dbba8eaef8, type: 3}
   boss: {fileID: 2179800783413408475, guid: 6e0ce8f6034b6974ba1556aeba5cdb23, type: 3}
   playerSpawn: {fileID: 0}
   bossSpawn: {fileID: 0}
+--- !u!114 &1071820525428301510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412863458704381580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a953b21d7cd54694a89e5314d8301632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rata: {fileID: 7291170386555317298, guid: 8af5ade076a66774da870a754f99b9b7, type: 3}
+  topo: {fileID: 1173098610473998245, guid: 37616f409022bf54e8f872e7985f860a, type: 3}
+  mosca: {fileID: 2179800783413408470, guid: 60fe3b948445ae348bf11821c44d8785, type: 3}
+  manualSpawn: 0
+  interval: 6

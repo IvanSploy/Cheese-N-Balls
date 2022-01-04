@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoosterController : MonoBehaviour
 {
     public float impulse;
+    public int points = 10;
 
     private Collider2D col;
 
@@ -22,5 +23,6 @@ public class BoosterController : MonoBehaviour
         ContactPoint2D puntoColision = otherCol.contacts[0];
         rb.velocity = new Vector2();
         rb.AddForce(puntoColision.normal * puntoColision.normalImpulse * impulse);
+        if (PersistentData.instance) PersistentData.instance.Points += points;
     }
 }

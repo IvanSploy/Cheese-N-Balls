@@ -5,6 +5,9 @@ using DG.Tweening;
 
 public class Duel : MonoBehaviour
 {
+    public static Duel instance;
+    private LauncherTrigger trigger;
+
     [SerializeField] private GameObject izquierda;
     [SerializeField] private GameObject derecha;
     [SerializeField] private GameObject vs;
@@ -16,9 +19,17 @@ public class Duel : MonoBehaviour
     private Vector3 posFinalIzquierda = new Vector3(-1.20000005f,2.75927567f,-4.95151997f);
     private Vector3 posFinalDerecha = new Vector3(1.26999998f,2.75927567f,-4.95151997f);
     private Vector3 posFinalVs = new Vector3(2.4977262f, 2.4977262f, 2.4977262f);
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
-    { 
+    {
+        trigger = FindObjectOfType<LauncherTrigger>();
+        trigger.close = true;
         DOTween.Init();
         DuelAnimation();
     }
@@ -65,5 +76,21 @@ public class Duel : MonoBehaviour
         uno.GetComponent<SpriteRenderer>().enabled = false;
         dos.GetComponent<SpriteRenderer>().enabled = false;
         tres.GetComponent<SpriteRenderer>().enabled = false;
+        FindObjectOfType<Boss>().state = Boss.BossState.DUELING;
+        trigger.close = false;
+    }
+
+    public void WinGame()
+    {
+        Debug.Log("Partida ganada");
+        Destroy(FindObjectOfType<PlayerController>().gameObject);
+        Destroy(FindObjectOfType<Boss>().gameObject);
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("Partida perdida");
+        Destroy(FindObjectOfType<PlayerController>().gameObject);
+        Destroy(FindObjectOfType<Boss>().gameObject);
     }
 }

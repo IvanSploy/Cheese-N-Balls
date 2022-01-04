@@ -11,11 +11,11 @@ public class DamageCheeseBehaviour : MonoBehaviour
     void Start()
     {
         DOTween.Init();
-        camera = FindObjectOfType<Camera>();
+        camera = Camera.main;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        camera.DOShakePosition(1, 0.2f, 10, 20, false);
+        camera.DOShakePosition(0.5f, 0.2f, 5, 20, false);
         HealthBehaviour.instance.Health -= 1;
         if (collision.tag == "Player")
         {

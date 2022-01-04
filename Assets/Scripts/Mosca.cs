@@ -19,8 +19,9 @@ public class Mosca : MonoBehaviour
     void FixedUpdate()
     {
         step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, posFinal.transform.position, step);
-        Vector2 vibration = new Vector3(Random.Range(-0.1f, 0.1f) * vibrate, Random.Range(-0.1f, 0.1f) * vibrate);
-        transform.position = new Vector3(transform.position.x + vibration.x, transform.position.y + vibration.y, transform.position.z);
+        Vector3 movement = Vector3.MoveTowards(transform.position, posFinal.transform.position, step);
+        movement.z = transform.position.z;
+        Vector3 vibration = new Vector3(Random.Range(-0.1f, 0.1f) * vibrate, Random.Range(-0.1f, 0.1f) * vibrate);
+        transform.position = movement + vibration;
     }
 }

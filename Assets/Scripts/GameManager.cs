@@ -7,6 +7,12 @@ public class GameManager : MonoBehaviour
     //Constantes
     public int BOSS_POINTS_LIMIT = 500;
 
+
+    public int FLY_POINTS = 5;
+    public int TOPO_POINTS = 15;
+    public int RATA_POINTS = 40;
+    public int BOSS_POINTS = 1000;
+
     //Singletone
     public static GameManager instance;
 
@@ -16,9 +22,6 @@ public class GameManager : MonoBehaviour
     public Transform playerSpawn;
     public Transform bossSpawn;
     private GameObject launcherTrigger;
-
-    //Control de juego
-    public int points;
     
 
     // Start is called before the first frame update
@@ -31,12 +34,23 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         DoNewBall();
+        InitPersistantData();
         StartCoroutine(DoWaitForBossSpawn());
+    }
+
+    public void InitPersistantData()
+    {
+        PersistentData data = PersistentData.instance;
+        data.Points = 0;
+        data.moscasDestroyed = 0;
+        data.toposDestroyed = 0;
+        data.ratasDestroyed = 0;
+        data.bossEliminado = false;
     }
 
     IEnumerator DoWaitForBossSpawn()
     {
-        yield return new WaitUntil(() => points >= BOSS_POINTS_LIMIT);
+        yield return new WaitUntil(() => PersistentData.instance.Points >= BOSS_POINTS_LIMIT);
         SpawnBoss();
     }
 

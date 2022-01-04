@@ -55,6 +55,21 @@ public class PlayerController : MonoBehaviour
     public void DamageEnemy(Collider2D enemy)
     {
         Destroy(enemy.gameObject);
+        if (enemy.GetComponent<Mosca>())
+        {
+            PersistentData.instance.Points += GameManager.instance.FLY_POINTS;
+            PersistentData.instance.moscasDestroyed += 1;
+        }
+        else if (enemy.GetComponent<Topo>())
+        {
+            PersistentData.instance.Points += GameManager.instance.TOPO_POINTS;
+            PersistentData.instance.toposDestroyed += 1;
+        }
+        else
+        {
+            PersistentData.instance.Points += GameManager.instance.RATA_POINTS;
+            PersistentData.instance.ratasDestroyed += 1;
+        }
         //Incluir particulas de muerte.
     }
 

@@ -24,7 +24,8 @@ public class Launcher : MonoBehaviour
 
     void Update()
     {
-        if (launcherTrigger.GetComponent<LauncherTrigger>().close) return;
+        if(launcherTrigger)
+            if (launcherTrigger.GetComponent<LauncherTrigger>().close) return;
         if (isActive)
         {
             if(pos2.y < transform.localScale.y)
