@@ -42,15 +42,18 @@ public class Duel : MonoBehaviour
         duelAnimation.Join(derecha.transform.DOMoveX(5.48000002f, 0.5f));
         duelAnimation.Append(tres.transform.DOScale(new Vector3(4f,4f,4f), 0.3f));
         duelAnimation.Join(tres.transform.DORotate(new Vector3(360, 0, 0), 0.4f, RotateMode.FastBeyond360));
-        duelAnimation.Append(tres.transform.DOScale(new Vector3(300f,300f,300f), 0.3f)).SetDelay(0.4f);
+        duelAnimation.Append(tres.transform.DOPunchScale(new Vector3 (4f, 4f, 4f),0.4f));
+        duelAnimation.Append(tres.transform.DOScale(new Vector3(300f,300f,300f), 0.3f));
         duelAnimation.Join(tres.GetComponent<SpriteRenderer>().DOFade(0, 0.3f));
         duelAnimation.Append(dos.transform.DOScale(new Vector3(4f,4f,4f), 0.3f));
         duelAnimation.Join(dos.transform.DORotate(new Vector3(360, 0, 0), 0.4f, RotateMode.FastBeyond360));
-        duelAnimation.Append(dos.transform.DOScale(new Vector3(300f,300f,300f), 0.3f)).SetDelay(0.4f);
+        duelAnimation.Append(dos.transform.DOPunchScale(new Vector3 (4f, 4f, 4f),0.4f));
+        duelAnimation.Append(dos.transform.DOScale(new Vector3(300f,300f,300f), 0.3f));
         duelAnimation.Join(dos.GetComponent<SpriteRenderer>().DOFade(0, 0.3f));
         duelAnimation.Append(uno.transform.DOScale(new Vector3(4f,4f,4f), 0.3f));
         duelAnimation.Join(uno.transform.DORotate(new Vector3(360, 0, 0), 0.4f, RotateMode.FastBeyond360));
-        duelAnimation.Append(uno.transform.DOScale(new Vector3(300f,300f,300f), 0.3f)).SetDelay(0.4f);
+        duelAnimation.Append(uno.transform.DOPunchScale(new Vector3 (4f, 4f, 4f),0.4f));
+        duelAnimation.Append(uno.transform.DOScale(new Vector3(300f,300f,300f), 0.3f));
         duelAnimation.Join(uno.GetComponent<SpriteRenderer>().DOFade(0, 0.3f)).OnComplete(DesactivarNumeros);
     }
     void DesactivarVS()
