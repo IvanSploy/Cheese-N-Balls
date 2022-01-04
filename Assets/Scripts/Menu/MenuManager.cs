@@ -39,14 +39,14 @@ public class MenuManager : MonoBehaviour
 
     public void MusicChange()
     {
-        float numVolume = volumenMusica.value * 100;
+        float numVolume = volumenMusica.value;
         musicaText.SetText(Mathf.RoundToInt(numVolume).ToString());
         
     }
 
     public void EffectsChange()
     {
-        float numVolume = volumenEfectos.value * 100;
+        float numVolume = volumenEfectos.value;
         efectosText.SetText(Mathf.RoundToInt(numVolume).ToString());
     }
 
