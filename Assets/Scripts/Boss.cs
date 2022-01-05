@@ -100,7 +100,7 @@ public class Boss : MonoBehaviour
             PersistentData.instance.bossEliminado = true;
             //Menu Victoria
             if (Duel.instance)
-                Duel.instance.GameOver();
+                Duel.instance.WinGame();
             else
                 Debug.LogWarning("Duelo requerido");
         }
