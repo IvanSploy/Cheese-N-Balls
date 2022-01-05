@@ -111,7 +111,7 @@ public class Duel : MonoBehaviour
         Debug.Log("Partida perdida");
 
         StopGame(true);
-        var tween = defeatMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 1.5f);
+        var tween = defeatMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 100), 1.5f);
         tween.SetUpdate(true);
 
         Destroy(FindObjectOfType<PlayerController>().gameObject);
