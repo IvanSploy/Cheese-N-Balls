@@ -60,7 +60,9 @@ public class MenuInGameManager : MonoBehaviour
     {
         pauseButtons.SetActive(false);
         pauseButton.SetActive(true);
-        pauseMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(1298, 0), 1.5f);
+        
+        var tween = pauseMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(1900, 0), 1.5f);
+        tween.SetUpdate(true);
         StopGame(false);
 
     }
@@ -69,9 +71,11 @@ public class MenuInGameManager : MonoBehaviour
     {
         optionsButtons.SetActive(false);
         pauseButtons.SetActive(true);
-        optionsMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-1298, 0), 1.5f);
-        pauseMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 1.5f);
 
+        var tween =optionsMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(-1900, 0), 1.5f);
+        tween.SetUpdate(true);
+        tween = pauseMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 1.5f);
+        tween.SetUpdate(true);
     }
 
 
@@ -80,31 +84,39 @@ public class MenuInGameManager : MonoBehaviour
     {
         pauseButtons.SetActive(false);
         optionsButtons.SetActive(true);
-        optionsMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 1.5f);
-        pauseMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(1298, 0), 1.5f);
+        var tween = optionsMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 1.5f);
+        tween.SetUpdate(true);
+        tween = pauseMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(1900, 0), 1.5f);
+        tween.SetUpdate(true);
 
     }
 
     public void GoToPause()
     {
+
+        pauseButton.SetActive(false);
         StopGame(true);
         pauseButtons.SetActive(true);
         Debug.Log("pausa");
         optionsButtons.SetActive(false);
-        optionsMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 1.5f);
 
+        var tween = pauseMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 1.5f);
+        tween.SetUpdate(true);
     }
     public void GoToMainMenu()
     {
 
         SceneManager.LoadScene(0);
+        Time.timeScale = 1;
 
     }
 
     public void RestartGame()
     {
-
-        SceneManager.LoadScene(1);
+        int scene = SceneManager.GetActiveScene().buildIndex;
+        Debug.Log("Restart Scene");
+        SceneManager.LoadScene(scene);
+        Time.timeScale = 1;
 
     }
 
