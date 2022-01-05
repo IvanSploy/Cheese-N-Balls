@@ -12,7 +12,7 @@ public class SpawnBall : MonoBehaviour
     void Start()
     {
         player = Instantiate(player, spawnPoint.transform.position, Quaternion.identity);
-        player.transform.localScale = new Vector3(0.5f, 0.5f, 1);
+        player.transform.localScale = new Vector3(1, 1, 1);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

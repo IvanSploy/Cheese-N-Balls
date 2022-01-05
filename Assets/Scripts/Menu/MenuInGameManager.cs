@@ -15,6 +15,8 @@ public class MenuInGameManager : MonoBehaviour
     [SerializeField] GameObject pauseButtons;
     [SerializeField] GameObject optionsMenu;
     [SerializeField] GameObject optionsButtons;
+    [SerializeField] GameObject defeatMenu;
+    [SerializeField] GameObject defeatButtons;
 
     public Slider volumenMusica;
     public TextMeshProUGUI musicaText;
@@ -31,6 +33,7 @@ public class MenuInGameManager : MonoBehaviour
         pauseButton.SetActive(true);
         pauseButtons.SetActive(false);
         optionsButtons.SetActive(false);
+        defeatButtons.SetActive(false);
         
     }
 
@@ -103,6 +106,19 @@ public class MenuInGameManager : MonoBehaviour
         var tween = pauseMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 1.5f);
         tween.SetUpdate(true);
     }
+    public void GoToDefeat()
+    {
+
+        pauseButton.SetActive(false);
+        StopGame(true);
+        defeatButtons.SetActive(true);
+        
+
+        var tween = defeatMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 1.5f);
+        tween.SetUpdate(true);
+    }
+
+
     public void GoToMainMenu()
     {
 
