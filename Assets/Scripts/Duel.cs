@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 public class Duel : MonoBehaviour
@@ -15,6 +16,17 @@ public class Duel : MonoBehaviour
     [SerializeField] private GameObject dos;
     [SerializeField] private GameObject tres;
 
+
+
+
+    [SerializeField] GameObject menuWinButton;
+    [SerializeField] GameObject menuDefeatButton;
+    [SerializeField] GameObject winMenu;
+    [SerializeField] GameObject defeatMenu;
+    
+
+
+
     private float offset = 0.3f;
     private Vector3 posFinalIzquierda = new Vector3(-1.20000005f,2.75927567f,-4.95151997f);
     private Vector3 posFinalDerecha = new Vector3(1.26999998f,2.75927567f,-4.95151997f);
@@ -23,6 +35,8 @@ public class Duel : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        menuWinButton.SetActive(true);
+        menuDefeatButton.SetActive(true);
     }
 
     // Start is called before the first frame update
@@ -83,14 +97,40 @@ public class Duel : MonoBehaviour
     public void WinGame()
     {
         Debug.Log("Partida ganada");
+
+        StopGame(true);
+        var tween = winMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 1.5f);
+        tween.SetUpdate(true);
+
         Destroy(FindObjectOfType<PlayerController>().gameObject);
         Destroy(FindObjectOfType<Boss>().gameObject);
     }
 
     public void GameOver()
-    {
+    {  
         Debug.Log("Partida perdida");
+
+        StopGame(true);
+        var tween = defeatMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 1.5f);
+        tween.SetUpdate(true);
+
         Destroy(FindObjectOfType<PlayerController>().gameObject);
         Destroy(FindObjectOfType<Boss>().gameObject);
     }
+
+    public void GoToMainMenu()
+    {
+
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
+
+    }
+
+    public void StopGame(bool activar)
+    {
+        if (activar) Time.timeScale = 0;
+        else Time.timeScale = 1;
+    }
+
+
 }
