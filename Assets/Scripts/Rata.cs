@@ -59,7 +59,7 @@ public class Rata : MonoBehaviour
     public void SetAnimation(bool isMoving)
     {
         if(isMoving) anim.Play("RataMoving");
-        else anim.Play("RataIdle");
+        else anim.Play("Idle");
     }
 
     IEnumerator TiempoAleatorio()
