@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine;
 
 public class Mosca : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Mosca : MonoBehaviour
     void Start()
     {
         posFinal = FindObjectOfType<DamageCheeseBehaviour>().gameObject;
+        
     }
 
     // Update is called once per frame

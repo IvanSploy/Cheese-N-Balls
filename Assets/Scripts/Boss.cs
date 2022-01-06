@@ -24,7 +24,9 @@ public class Boss : MonoBehaviour
     [Range(0f, 10f)]
     public float spawnInterval;
     public int lifeCount = 3;
-
+    public AudioSource audioSourceDamage;
+    public AudioSource audioSourcePisada;
+    
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -66,6 +68,7 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(time);
         //Aquí se spawnea un enemigo.
         Camera.main.DOShakePosition(1, 0.2f, 10, 20);
+        audioSourcePisada.Play();
         EnemiesManager.instance.SpawnRandomEnemy();
     }
 
@@ -87,8 +90,11 @@ public class Boss : MonoBehaviour
     public void TakeLife()
     {
         //Quitar Vida
+
+
         if (state == BossState.NORMAL)
         {
+            audioSourceDamage.Play();
             if (--lifeCount <= 0)
             {
                 SceneManager.LoadScene(2);

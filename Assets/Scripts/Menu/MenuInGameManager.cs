@@ -20,7 +20,7 @@ public class MenuInGameManager : MonoBehaviour
     [SerializeField] GameObject defeatButtons;
 
     public AudioMixer masterMixer;
-    private AudioSource audioSource;
+    private AudioSource audioBoton;
 
     public Slider musicSlider;
     public TextMeshProUGUI musicaText;
@@ -30,7 +30,10 @@ public class MenuInGameManager : MonoBehaviour
 
     [SerializeField] private AudioSource audioMuelle;
     [SerializeField] private AudioSource audioPalancaIzq;
-    [SerializeField] private AudioSource audioPalancaDer; 
+    [SerializeField] private AudioSource audioPalancaDer;
+
+    public AudioSource audioDerrota;
+    public AudioSource audioMusica;
 
     GameObject camera;
    
@@ -41,7 +44,7 @@ public class MenuInGameManager : MonoBehaviour
         pauseButtons.SetActive(false);
         optionsButtons.SetActive(false);
         defeatButtons.SetActive(false);
-        audioSource = GetComponent<AudioSource>();
+        audioBoton = GetComponent<AudioSource>();
         musicSlider.value = PlayerPrefs.GetFloat("volumenSonido", -20);
         efectosSlider.value = PlayerPrefs.GetFloat("volumenEfectos", -20);
         masterMixer.SetFloat("Musica", musicSlider.value);
@@ -62,7 +65,7 @@ public class MenuInGameManager : MonoBehaviour
 
     public void PlayButtonSound()
     {
-        audioSource.Play();
+        audioBoton.Play();
     }
 
     public void EffectsChange()
@@ -145,10 +148,12 @@ public class MenuInGameManager : MonoBehaviour
     }
     public void GoToDefeat()
     {
-
+        audioMusica.mute = true;
         pauseButton.SetActive(false);
         StopGame(true);
+        audioDerrota.Play();
         defeatButtons.SetActive(true);
+
         
 
         var tween = defeatMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 1.5f);

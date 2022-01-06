@@ -12,7 +12,6 @@ public class Launcher : MonoBehaviour
     private Vector3 pos;
     private Vector3 pos2;
     private GameObject launcherTrigger;
-    public AudioMixer mixer;
     private AudioSource audioSource;
 
     private void Awake()

@@ -17,6 +17,12 @@ public class Duel : MonoBehaviour
     [SerializeField] private GameObject tres;
 
 
+    [SerializeField] private AudioSource musicaDuelo;
+    [SerializeField] private AudioSource musicaDefeat;
+    [SerializeField] private AudioSource musicaWin;
+    
+
+
 
 
     [SerializeField] GameObject menuWinButton;
@@ -51,15 +57,23 @@ public class Duel : MonoBehaviour
     // Update is called once per frame
     void DuelAnimation()
     {
+
         Sequence duelAnimation = DOTween.Sequence();
+
         
+
         duelAnimation.Append(izquierda.transform.DOMoveX(posFinalIzquierda.x, 0.5f));
         duelAnimation.Join(derecha.transform.DOMoveX(posFinalDerecha.x, 0.5f));
         izquierda.transform.DOShakePosition(1f, new Vector3(0.1f, 0 , 0), 7, 0, false, false).SetDelay(0.5f);
+
+       
+
         derecha.transform.DOShakePosition(1f, new Vector3(0.1f, 0 , 0), 7, 0, false, false).SetDelay(0.5f);
         duelAnimation.Join(vs.transform.DOScale(posFinalVs, 0.8f));
         duelAnimation.Join(vs.transform.DORotate(new Vector3(720, 0, 0), 0.9f, RotateMode.FastBeyond360));
         duelAnimation.Append(vs.transform.DOPunchScale(new Vector3 (2, 2, 2), 0.4f, 4, 1));
+
+        musicaDuelo.Play();
         duelAnimation.Append(vs.transform.DOScale(new Vector3(1.04907f,1.04907f,1.04907f), 0.4f));
         duelAnimation.Append(vs.transform.DOScale(new Vector3(200f,200f,200f), 0.2f)).OnComplete(DesactivarVS);
         duelAnimation.Join(vs.GetComponent<SpriteRenderer>().DOFade(0, 0.2f));
@@ -97,7 +111,9 @@ public class Duel : MonoBehaviour
     public void WinGame()
     {
         Debug.Log("Partida ganada");
-
+        musicaDuelo.mute = true;
+        musicaWin.Play();
+        
         StopGame(true);
         var tween = winMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 1.5f);
         tween.SetUpdate(true);
@@ -109,6 +125,8 @@ public class Duel : MonoBehaviour
     public void GameOver()
     {  
         Debug.Log("Partida perdida");
+        musicaDuelo.mute = true;
+        musicaDefeat.Play();
 
         StopGame(true);
         var tween = defeatMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 100), 1.5f);

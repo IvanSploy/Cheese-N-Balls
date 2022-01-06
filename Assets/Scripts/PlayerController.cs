@@ -54,7 +54,9 @@ public class PlayerController : MonoBehaviour
 
     public void DamageEnemy(Collider2D enemy)
     {
-        Destroy(enemy.gameObject);
+        enemy.GetComponent<AudioSource>().Play();
+
+        Debug.Log("Muerte bicho");
         if (enemy.GetComponent<Mosca>())
         {
             PersistentData.instance.Points += GameManager.instance.FLY_POINTS;
@@ -70,7 +72,26 @@ public class PlayerController : MonoBehaviour
             PersistentData.instance.Points += GameManager.instance.RATA_POINTS;
             PersistentData.instance.ratasDestroyed += 1;
         }
+        StartCoroutine(KillEnemy(enemy.gameObject));
         //Incluir particulas de muerte.
+    }
+
+    IEnumerator KillEnemy(GameObject enemy)
+    {
+        foreach (var collider in enemy.GetComponentsInChildren<Collider2D>())
+        {
+            collider.enabled = false;
+            
+
+        }
+        foreach (var renderer in enemy.GetComponentsInChildren<Renderer>())
+        {
+            renderer.enabled = false;
+
+
+        }
+        yield return new WaitForSeconds(2);
+        Destroy(enemy);
     }
 
     public void DamageBoss(Collider2D enemy)
