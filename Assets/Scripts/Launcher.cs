@@ -1,6 +1,7 @@
 ﻿
 using static UnityEngine.InputSystem.InputAction;
 using UnityEngine;
+using UnityEngine.Audio;
 using System.Collections;
 public class Launcher : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Launcher : MonoBehaviour
     private Vector3 pos;
     private Vector3 pos2;
     private GameObject launcherTrigger;
+    public AudioMixer mixer;
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -20,12 +23,14 @@ public class Launcher : MonoBehaviour
         m_input = new InputMaster();
         m_input.Player.Click.started += ctx => OnLauncher(ctx);
         m_input.Player.Click.canceled += ctx => OnExitLauncher();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
         if(launcherTrigger)
             if (launcherTrigger.GetComponent<LauncherTrigger>().close) return;
+
         if (isActive)
         {
             if(pos2.y < transform.localScale.y)
@@ -33,8 +38,11 @@ public class Launcher : MonoBehaviour
         }
         else
         {
-            if(pos.y > transform.localScale.y)
-                 transform.localScale =  new Vector3(transform.localScale.x, pos2.y + (1 - (power/100) * 2) , transform.localScale.z);
+            if (pos.y > transform.localScale.y)
+            {
+                transform.localScale = new Vector3(transform.localScale.x, pos2.y + (1 - (power / 100) * 2), transform.localScale.z);
+                audioSource.Play();
+            }
         }
     }
     private void FixedUpdate()
@@ -86,6 +94,7 @@ public class Launcher : MonoBehaviour
     }
     private void OnExitLauncher()
     {
+        
         isActive = false;
     }
 }

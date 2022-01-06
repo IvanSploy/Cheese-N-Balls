@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.Audio;
 
 
 public class MenuManager : MonoBehaviour
@@ -17,10 +18,14 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject optionsButtons;
     [SerializeField] GameObject optionsMenu;
 
-    public Slider volumenMusica;
+    public AudioMixer masterMixer;
+    private AudioSource audioSource;
+
+
+    public Slider musicSlider;
     public TextMeshProUGUI musicaText;
 
-    public Slider volumenEfectos;
+    public Slider efectosSlider;
     public TextMeshProUGUI efectosText;
 
 
@@ -34,20 +39,34 @@ public class MenuManager : MonoBehaviour
         creditsButtons.SetActive(false);
         camera = FindObjectOfType<Camera>().gameObject;
         flippers = FindObjectsOfType<FlipperController>();
+        musicSlider.value = PlayerPrefs.GetFloat("volumenSonido", -20);
+        efectosSlider.value = PlayerPrefs.GetFloat("volumenEfectos", -20);
+        masterMixer.SetFloat("Musica", musicSlider.value);
+        masterMixer.SetFloat("Efectos", efectosSlider.value);
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    public void PlayButtonSound()
+    {
+        audioSource.Play();
     }
 
 
     public void MusicChange()
     {
-        float numVolume = volumenMusica.value;
+        float numVolume = musicSlider.value;
         musicaText.SetText(Mathf.RoundToInt(numVolume).ToString());
-        
+        PlayerPrefs.SetFloat("volumenSonido", numVolume);
+        masterMixer.SetFloat("Musica", numVolume);
+
     }
 
     public void EffectsChange()
     {
-        float numVolume = volumenEfectos.value;
+        float numVolume = efectosSlider.value;
         efectosText.SetText(Mathf.RoundToInt(numVolume).ToString());
+        PlayerPrefs.SetFloat("volumenEfectos", numVolume);
+        masterMixer.SetFloat("Efectos", numVolume);
     }
 
 

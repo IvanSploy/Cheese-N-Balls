@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using TMPro;
 using DG.Tweening;
 
@@ -18,12 +19,18 @@ public class MenuInGameManager : MonoBehaviour
     [SerializeField] GameObject defeatMenu;
     [SerializeField] GameObject defeatButtons;
 
-    public Slider volumenMusica;
+    public AudioMixer masterMixer;
+    private AudioSource audioSource;
+
+    public Slider musicSlider;
     public TextMeshProUGUI musicaText;
 
-    public Slider volumenEfectos;
+    public Slider efectosSlider;
     public TextMeshProUGUI efectosText;
 
+    [SerializeField] private AudioSource audioMuelle;
+    [SerializeField] private AudioSource audioPalancaIzq;
+    [SerializeField] private AudioSource audioPalancaDer; 
 
     GameObject camera;
    
@@ -34,28 +41,58 @@ public class MenuInGameManager : MonoBehaviour
         pauseButtons.SetActive(false);
         optionsButtons.SetActive(false);
         defeatButtons.SetActive(false);
-        
+        audioSource = GetComponent<AudioSource>();
+        musicSlider.value = PlayerPrefs.GetFloat("volumenSonido", -20);
+        efectosSlider.value = PlayerPrefs.GetFloat("volumenEfectos", -20);
+        masterMixer.SetFloat("Musica", musicSlider.value);
+        masterMixer.SetFloat("Efectos", efectosSlider.value);
+        MusicChange();
+        EffectsChange();
+      
     }
 
 
     public void MusicChange()
     {
-        float numVolume = volumenMusica.value;
+        float numVolume = musicSlider.value;
         musicaText.SetText(Mathf.RoundToInt(numVolume).ToString());
-        
+        PlayerPrefs.SetFloat("volumenSonido", numVolume);
+        masterMixer.SetFloat("Musica", numVolume);
+    }
+
+    public void PlayButtonSound()
+    {
+        audioSource.Play();
     }
 
     public void EffectsChange()
     {
-        float numVolume = volumenEfectos.value;
+        float numVolume = efectosSlider.value;
         efectosText.SetText(Mathf.RoundToInt(numVolume).ToString());
+        PlayerPrefs.SetFloat("volumenEfectos", numVolume);
+        masterMixer.SetFloat("Efectos", numVolume);
     }
 
 
     public void StopGame(bool activar)
     {
-        if (activar) Time.timeScale = 0;
-        else Time.timeScale = 1;
+
+        
+
+        if (activar)
+        {
+            audioPalancaDer.mute = true;
+            audioPalancaIzq.mute = true;
+            audioMuelle.mute = true;
+            Time.timeScale = 0;
+        }
+        else
+        {
+            audioPalancaDer.mute = false;
+            audioPalancaIzq.mute = false;
+            audioMuelle.mute = false;
+            Time.timeScale = 1;
+        }
     }
 
     [ContextMenu("Volver")]
