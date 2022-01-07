@@ -772,6 +772,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &842565969 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3238900579830556411, guid: c2780072514207342883955d972179c4, type: 3}
+  m_PrefabInstance: {fileID: 2036337623}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &956576347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1120,6 +1131,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuDefeatButton
       objectReference: {fileID: 0}
+    - target: {fileID: 3238900579830556411, guid: 0a5376a2d3d2c9f43a5424429685dd8b, type: 3}
+      propertyPath: m_fontSize
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238900579830556411, guid: 0a5376a2d3d2c9f43a5424429685dd8b, type: 3}
+      propertyPath: m_margin.x
+      value: 84.29131
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238900579830556411, guid: 0a5376a2d3d2c9f43a5424429685dd8b, type: 3}
+      propertyPath: m_margin.z
+      value: -31.237083
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238900579830556411, guid: 0a5376a2d3d2c9f43a5424429685dd8b, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238900579830556411, guid: 0a5376a2d3d2c9f43a5424429685dd8b, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7148259916383588493, guid: 0a5376a2d3d2c9f43a5424429685dd8b, type: 3}
       propertyPath: m_SizeDelta.y
       value: 34.7099
@@ -1437,6 +1468,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1307928608 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9033610942949004885, guid: c2780072514207342883955d972179c4, type: 3}
+  m_PrefabInstance: {fileID: 2036337623}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1328832541 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8786444154253074344, guid: c2780072514207342883955d972179c4, type: 3}
+  m_PrefabInstance: {fileID: 2036337623}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1335398534
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1498,6 +1551,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6d8a9bf2cd362e40a73d1388de9f2e9, type: 3}
+--- !u!114 &1389327824 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3238900579830556411, guid: 0a5376a2d3d2c9f43a5424429685dd8b, type: 3}
+  m_PrefabInstance: {fileID: 1075534179}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1395905970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,6 +1730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e2a2c25a500b447a7bef1c30e9054e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BOSS_POINTS: 1000
   izquierda: {fileID: 1138137028}
   derecha: {fileID: 536024780}
   vs: {fileID: 1705996663}
@@ -1679,6 +1744,12 @@ MonoBehaviour:
   menuDefeatButton: {fileID: 1075534181}
   winMenu: {fileID: 2036337625}
   defeatMenu: {fileID: 1075534182}
+  vidasGanar: {fileID: 1328832541}
+  enemigosGanar: {fileID: 1307928608}
+  puntosGanar: {fileID: 842565969}
+  vidasPerder: {fileID: 1940000485}
+  enemigosPerder: {fileID: 1985803874}
+  puntosPerder: {fileID: 1389327824}
 --- !u!224 &1395905975
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2689,6 +2760,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1940000485 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8786444154253074344, guid: 0a5376a2d3d2c9f43a5424429685dd8b, type: 3}
+  m_PrefabInstance: {fileID: 1075534179}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1985803874 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9033610942949004885, guid: 0a5376a2d3d2c9f43a5424429685dd8b, type: 3}
+  m_PrefabInstance: {fileID: 1075534179}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2036337623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2787,6 +2880,30 @@ PrefabInstance:
     - target: {fileID: 1957294346468675151, guid: c2780072514207342883955d972179c4, type: 3}
       propertyPath: m_Name
       value: MenuWinButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238900579830556411, guid: c2780072514207342883955d972179c4, type: 3}
+      propertyPath: m_text
+      value: 45545
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238900579830556411, guid: c2780072514207342883955d972179c4, type: 3}
+      propertyPath: m_fontSize
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238900579830556411, guid: c2780072514207342883955d972179c4, type: 3}
+      propertyPath: m_margin.x
+      value: 81.334625
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238900579830556411, guid: c2780072514207342883955d972179c4, type: 3}
+      propertyPath: m_margin.z
+      value: -35.1513
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238900579830556411, guid: c2780072514207342883955d972179c4, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238900579830556411, guid: c2780072514207342883955d972179c4, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8599819676885648630, guid: c2780072514207342883955d972179c4, type: 3}
       propertyPath: m_SizeDelta.x

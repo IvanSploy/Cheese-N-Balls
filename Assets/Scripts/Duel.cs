@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using TMPro;
 
 public class Duel : MonoBehaviour
 {
     public static Duel instance;
+    public int BOSS_POINTS = 1000;
     private LauncherTrigger trigger;
 
     [SerializeField] private GameObject izquierda;
@@ -16,22 +18,21 @@ public class Duel : MonoBehaviour
     [SerializeField] private GameObject dos;
     [SerializeField] private GameObject tres;
 
-
     [SerializeField] private AudioSource musicaDuelo;
     [SerializeField] private AudioSource musicaDefeat;
     [SerializeField] private AudioSource musicaWin;
-    
-
-
-
 
     [SerializeField] GameObject menuWinButton;
     [SerializeField] GameObject menuDefeatButton;
     [SerializeField] GameObject winMenu;
     [SerializeField] GameObject defeatMenu;
-    
 
-
+    public TMP_Text vidasGanar;
+    public TMP_Text enemigosGanar;
+    public TMP_Text puntosGanar;
+    public TMP_Text vidasPerder;
+    public TMP_Text enemigosPerder;
+    public TMP_Text puntosPerder;
 
     private float offset = 0.3f;
     private Vector3 posFinalIzquierda = new Vector3(-1.20000005f,2.75927567f,-4.95151997f);
@@ -57,10 +58,7 @@ public class Duel : MonoBehaviour
     // Update is called once per frame
     void DuelAnimation()
     {
-
         Sequence duelAnimation = DOTween.Sequence();
-
-        
 
         duelAnimation.Append(izquierda.transform.DOMoveX(posFinalIzquierda.x, 0.5f));
         duelAnimation.Join(derecha.transform.DOMoveX(posFinalDerecha.x, 0.5f));
@@ -120,6 +118,10 @@ public class Duel : MonoBehaviour
 
         Destroy(FindObjectOfType<PlayerController>().gameObject);
         Destroy(FindObjectOfType<Boss>().gameObject);
+
+        vidasGanar.SetText("" + PersistentData.instance.vida);
+        enemigosGanar.SetText("" + PersistentData.instance.enemiesDestroyed);
+        puntosGanar.SetText("" + PersistentData.instance.Points);
     }
 
     public void GameOver()
@@ -134,14 +136,16 @@ public class Duel : MonoBehaviour
 
         Destroy(FindObjectOfType<PlayerController>().gameObject);
         Destroy(FindObjectOfType<Boss>().gameObject);
+
+        vidasPerder.SetText("" + PersistentData.instance.vida);
+        enemigosPerder.SetText("" + PersistentData.instance.enemiesDestroyed);
+        puntosPerder.SetText("" + PersistentData.instance.Points);
     }
 
     public void GoToMainMenu()
     {
-
         SceneManager.LoadScene(0);
         Time.timeScale = 1;
-
     }
 
     public void StopGame(bool activar)

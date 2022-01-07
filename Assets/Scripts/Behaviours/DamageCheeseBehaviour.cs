@@ -28,11 +28,9 @@ public class DamageCheeseBehaviour : MonoBehaviour
         camera.DOShakePosition(0.5f, 0.2f, 5, 20, false);
         HealthBehaviour.instance.Health -= 1;
         audioSource.Play();
-        if (HealthBehaviour.instance.Health == 0)
+        if (HealthBehaviour.instance.Health <= 0)
         {
-            menuInGameManager.StopGame(true);
             menuInGameManager.GoToDefeat();
-
         }
         if (collision.tag == "Player")
         {

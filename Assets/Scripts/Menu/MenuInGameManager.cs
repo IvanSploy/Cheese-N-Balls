@@ -10,7 +10,6 @@ using DG.Tweening;
 
 public class MenuInGameManager : MonoBehaviour
 {
-    
     [SerializeField] GameObject pauseButton;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject pauseButtons;
@@ -35,8 +34,10 @@ public class MenuInGameManager : MonoBehaviour
     public AudioSource audioDerrota;
     public AudioSource audioMusica;
 
-    GameObject camera;
-   
+    public TMP_Text vidas;
+    public TMP_Text enemigos;
+    public TMP_Text puntos;
+
 
     private void Awake()
     {
@@ -51,9 +52,7 @@ public class MenuInGameManager : MonoBehaviour
         masterMixer.SetFloat("Efectos", Mathf.Log10(efectosSlider.value) * 20);
         MusicChange();
         EffectsChange();
-      
     }
-
 
     public void MusicChange()
     {
@@ -79,9 +78,6 @@ public class MenuInGameManager : MonoBehaviour
 
     public void StopGame(bool activar)
     {
-
-        
-
         if (activar)
         {
             audioPalancaDer.mute = true;
@@ -153,8 +149,9 @@ public class MenuInGameManager : MonoBehaviour
         StopGame(true);
         audioDerrota.Play();
         defeatButtons.SetActive(true);
-
-        
+        vidas.SetText("" + HealthBehaviour.instance.Health);
+        enemigos.SetText("" + PersistentData.instance.enemiesDestroyed);
+        puntos.SetText("" + PersistentData.instance.Points);
 
         var tween = defeatMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 1.5f);
         tween.SetUpdate(true);
@@ -163,10 +160,8 @@ public class MenuInGameManager : MonoBehaviour
 
     public void GoToMainMenu()
     {
-
         SceneManager.LoadScene(0);
         Time.timeScale = 1;
-
     }
 
     public void RestartGame()
@@ -175,10 +170,5 @@ public class MenuInGameManager : MonoBehaviour
         Debug.Log("Restart Scene");
         SceneManager.LoadScene(scene);
         Time.timeScale = 1;
-
     }
-
-
-
-
 }

@@ -1627,8 +1627,24 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3238900579830556411, guid: fa8d18f4df41e234a99bf6f6c546556d, type: 3}
+      propertyPath: m_fontSize
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238900579830556411, guid: fa8d18f4df41e234a99bf6f6c546556d, type: 3}
       propertyPath: m_margin.x
-      value: -1.9559687
+      value: -31.374252
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238900579830556411, guid: fa8d18f4df41e234a99bf6f6c546556d, type: 3}
+      propertyPath: m_margin.z
+      value: -35.301945
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238900579830556411, guid: fa8d18f4df41e234a99bf6f6c546556d, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238900579830556411, guid: fa8d18f4df41e234a99bf6f6c546556d, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3564266184212472679, guid: fa8d18f4df41e234a99bf6f6c546556d, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2750,25 +2766,6 @@ Transform:
   m_Father: {fileID: 1194287612}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1216882172 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8468493773228639423, guid: 4c15cd9706ac1d5468df0c201b1c1feb, type: 3}
-  m_PrefabInstance: {fileID: 1604216358}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1216882173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1216882172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20bd642e1e635f74e9e2c2c4c75323fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isActive: 1
-  isLeftFlipper: 1
 --- !u!82 &1216882174 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 6026569903206054237, guid: 4c15cd9706ac1d5468df0c201b1c1feb, type: 3}
@@ -2784,30 +2781,22 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1384305694702228616, guid: fa8d18f4df41e234a99bf6f6c546556d, type: 3}
   m_PrefabInstance: {fileID: 782544915}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1246657218 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2656607589285081263, guid: 4036494920fb2604dbd60b26562ced28, type: 3}
-  m_PrefabInstance: {fileID: 1252763501}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1246657219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1246657218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20bd642e1e635f74e9e2c2c4c75323fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isActive: 1
-  isLeftFlipper: 0
 --- !u!82 &1246657220 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 274508382889802324, guid: 4036494920fb2604dbd60b26562ced28, type: 3}
   m_PrefabInstance: {fileID: 1252763501}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1249896425 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3238900579830556411, guid: fa8d18f4df41e234a99bf6f6c546556d, type: 3}
+  m_PrefabInstance: {fileID: 782544915}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1252763501
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2887,8 +2876,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightFlipper
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2656607589285081256, guid: 4036494920fb2604dbd60b26562ced28, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4036494920fb2604dbd60b26562ced28, type: 3}
 --- !u!1001 &1263145015
 PrefabInstance:
@@ -3416,6 +3404,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1384305694702228616, guid: 4f7038282b1be21449822910591564d3, type: 3}
   m_PrefabInstance: {fileID: 1315787389}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1318417144 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9033610942949004885, guid: fa8d18f4df41e234a99bf6f6c546556d, type: 3}
+  m_PrefabInstance: {fileID: 782544915}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1335775645
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4863,6 +4862,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52bac063b2bdbc8429715c3290219610, type: 3}
+--- !u!114 &1649495578 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8786444154253074344, guid: fa8d18f4df41e234a99bf6f6c546556d, type: 3}
+  m_PrefabInstance: {fileID: 782544915}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1661139596
 GameObject:
   m_ObjectHideFlags: 0
@@ -6074,6 +6084,10 @@ PrefabInstance:
       propertyPath: playerSpawn
       value: 
       objectReference: {fileID: 811762255641429008}
+    - target: {fileID: 412863458704381581, guid: 49edf20de2d209748a8e6b7cc43b0bbe, type: 3}
+      propertyPath: BOSS_POINTS_LIMIT
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49edf20de2d209748a8e6b7cc43b0bbe, type: 3}
 --- !u!222 &811762253672695864
@@ -6523,6 +6537,9 @@ MonoBehaviour:
   audioPalancaDer: {fileID: 1246657220}
   audioDerrota: {fileID: 811762255327410204}
   audioMusica: {fileID: 811762255327410203}
+  vidas: {fileID: 1649495578}
+  enemigos: {fileID: 1318417144}
+  puntos: {fileID: 1249896425}
 --- !u!114 &811762255327410201
 MonoBehaviour:
   m_ObjectHideFlags: 0

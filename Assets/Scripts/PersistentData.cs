@@ -22,10 +22,8 @@ public class PersistentData : MonoBehaviour
             }
         }
     }
-    public int moscasDestroyed;
-    public int toposDestroyed;
-    public int ratasDestroyed;
-    public bool bossEliminado;
+    public int enemiesDestroyed;
+    public int vida;
 
 
     private void Awake()

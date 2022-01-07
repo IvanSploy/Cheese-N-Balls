@@ -41,8 +41,8 @@ public class MenuManager : MonoBehaviour
         flippers = FindObjectsOfType<FlipperController>();
         musicSlider.value = PlayerPrefs.GetFloat("volumenSonido", -30);
         efectosSlider.value = PlayerPrefs.GetFloat("volumenEfectos", -30);
-        masterMixer.SetFloat("Musica",Mathf.Log10( musicSlider.value)*20);
-        masterMixer.SetFloat("Efectos",Mathf.Log10( efectosSlider.value)*20);
+        masterMixer.SetFloat("Musica",musicSlider.value);
+        masterMixer.SetFloat("Efectos",efectosSlider.value);
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -51,11 +51,10 @@ public class MenuManager : MonoBehaviour
         audioSource.Play();
     }
 
-
     public void MusicChange()
     {
         float numVolume = musicSlider.value;
-        musicaText.SetText(Mathf.RoundToInt(numVolume+80).ToString());
+        musicaText.SetText(Mathf.RoundToInt((numVolume+55) * 2).ToString());
         PlayerPrefs.SetFloat("volumenSonido", numVolume);
         masterMixer.SetFloat("Musica", numVolume);
 
@@ -64,12 +63,10 @@ public class MenuManager : MonoBehaviour
     public void EffectsChange()
     {
         float numVolume = efectosSlider.value;
-        efectosText.SetText(Mathf.RoundToInt(numVolume+80).ToString());
+        efectosText.SetText(Mathf.RoundToInt((numVolume+55) * 2).ToString());
         PlayerPrefs.SetFloat("volumenEfectos", numVolume);
         masterMixer.SetFloat("Efectos", numVolume);
     }
-
-
 
     public int GetCurrentLevel()
     {
@@ -161,8 +158,6 @@ public class MenuManager : MonoBehaviour
         DisableFlippers(true);
     }
 
-
-
     public void GoToOptions()
     {
         menuButtons.SetActive(false);
@@ -170,8 +165,4 @@ public class MenuManager : MonoBehaviour
         optionsMenu.GetComponent<RectTransform>().DOAnchorPos(new Vector2(0, 0), 2);
         DisableFlippers(false);
     }
-
-
-
-
 }

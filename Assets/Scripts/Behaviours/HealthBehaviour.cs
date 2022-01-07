@@ -31,12 +31,6 @@ public class HealthBehaviour : MonoBehaviour
                 else
                     hearts[i].sprite = emptyHealth;
             }
-
-            if (m_health <= 0)
-            {
-                m_health = 0;
-                GameManager.instance.DoGameOver();
-            }
         }
     }
 

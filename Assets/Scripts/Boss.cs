@@ -97,16 +97,19 @@ public class Boss : MonoBehaviour
             audioSourceDamage.Play();
             if (--lifeCount <= 0)
             {
+                PersistentData.instance.vida = HealthBehaviour.instance.Health;
                 SceneManager.LoadScene(2);
             }
         }
         //Derrotar Boss
         else
         {
-            PersistentData.instance.bossEliminado = true;
             //Menu Victoria
             if (Duel.instance)
+            {
+                PersistentData.instance.Points += Duel.instance.BOSS_POINTS;
                 Duel.instance.WinGame();
+            }
             else
                 Debug.LogWarning("Duelo requerido");
         }

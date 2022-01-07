@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     public int FLY_POINTS = 5;
     public int TOPO_POINTS = 15;
     public int RATA_POINTS = 40;
-    public int BOSS_POINTS = 1000;
 
     //Singletone
     public static GameManager instance;
@@ -42,10 +41,7 @@ public class GameManager : MonoBehaviour
     {
         PersistentData data = PersistentData.instance;
         data.Points = 0;
-        data.moscasDestroyed = 0;
-        data.toposDestroyed = 0;
-        data.ratasDestroyed = 0;
-        data.bossEliminado = false;
+        data.enemiesDestroyed = 0;
     }
 
     IEnumerator DoWaitForBossSpawn()

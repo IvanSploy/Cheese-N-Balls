@@ -60,17 +60,17 @@ public class PlayerController : MonoBehaviour
         if (enemy.GetComponent<Mosca>())
         {
             PersistentData.instance.Points += GameManager.instance.FLY_POINTS;
-            PersistentData.instance.moscasDestroyed += 1;
+            PersistentData.instance.enemiesDestroyed += 1;
         }
         else if (enemy.GetComponent<Topo>())
         {
             PersistentData.instance.Points += GameManager.instance.TOPO_POINTS;
-            PersistentData.instance.toposDestroyed += 1;
+            PersistentData.instance.enemiesDestroyed += 1;
         }
         else
         {
             PersistentData.instance.Points += GameManager.instance.RATA_POINTS;
-            PersistentData.instance.ratasDestroyed += 1;
+            PersistentData.instance.enemiesDestroyed += 1;
         }
         StartCoroutine(KillEnemy(enemy.gameObject));
         //Incluir particulas de muerte.
@@ -81,14 +81,10 @@ public class PlayerController : MonoBehaviour
         foreach (var collider in enemy.GetComponentsInChildren<Collider2D>())
         {
             collider.enabled = false;
-            
-
         }
         foreach (var renderer in enemy.GetComponentsInChildren<Renderer>())
         {
             renderer.enabled = false;
-
-
         }
         yield return new WaitForSeconds(2);
         Destroy(enemy);
