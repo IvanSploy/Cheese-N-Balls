@@ -3640,7 +3640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3333801313187534892, guid: d4fb34eed7c587b4b9c9366f615ece53, type: 3}
       propertyPath: m_Value
-      value: -20
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 3333801313187534892, guid: d4fb34eed7c587b4b9c9366f615ece53, type: 3}
       propertyPath: m_MaxValue
@@ -3684,7 +3684,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3567802813390030414, guid: d4fb34eed7c587b4b9c9366f615ece53, type: 3}
       propertyPath: m_Value
-      value: 2
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 3567802813390030414, guid: d4fb34eed7c587b4b9c9366f615ece53, type: 3}
       propertyPath: m_MaxValue
@@ -3726,6 +3726,22 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4619702197990170385, guid: d4fb34eed7c587b4b9c9366f615ece53, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 28.8031
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619702197990170385, guid: d4fb34eed7c587b4b9c9366f615ece53, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 21.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619702197990170385, guid: d4fb34eed7c587b4b9c9366f615ece53, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 91.40001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619702197990170385, guid: d4fb34eed7c587b4b9c9366f615ece53, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.57499
+      objectReference: {fileID: 0}
     - target: {fileID: 4623945533628676673, guid: d4fb34eed7c587b4b9c9366f615ece53, type: 3}
       propertyPath: m_text
       value: Options
@@ -3761,6 +3777,14 @@ PrefabInstance:
     - target: {fileID: 6668965624025994097, guid: d4fb34eed7c587b4b9c9366f615ece53, type: 3}
       propertyPath: m_fontSize
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6668965624025994097, guid: d4fb34eed7c587b4b9c9366f615ece53, type: 3}
+      propertyPath: m_margin.x
+      value: 1.1222553
+      objectReference: {fileID: 0}
+    - target: {fileID: 6668965624025994097, guid: d4fb34eed7c587b4b9c9366f615ece53, type: 3}
+      propertyPath: m_margin.z
+      value: -0.50821733
       objectReference: {fileID: 0}
     - target: {fileID: 6668965624025994097, guid: d4fb34eed7c587b4b9c9366f615ece53, type: 3}
       propertyPath: m_fontSizeMax

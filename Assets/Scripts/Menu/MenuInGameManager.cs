@@ -45,10 +45,10 @@ public class MenuInGameManager : MonoBehaviour
         optionsButtons.SetActive(false);
         defeatButtons.SetActive(false);
         audioBoton = GetComponent<AudioSource>();
-        musicSlider.value = PlayerPrefs.GetFloat("volumenSonido", -20);
-        efectosSlider.value = PlayerPrefs.GetFloat("volumenEfectos", -20);
-        masterMixer.SetFloat("Musica", musicSlider.value);
-        masterMixer.SetFloat("Efectos", efectosSlider.value);
+        musicSlider.value = PlayerPrefs.GetFloat("volumenSonido", -30);
+        efectosSlider.value = PlayerPrefs.GetFloat("volumenEfectos", -30);
+        masterMixer.SetFloat("Musica", Mathf.Log10(musicSlider.value) * 20);
+        masterMixer.SetFloat("Efectos", Mathf.Log10(efectosSlider.value) * 20);
         MusicChange();
         EffectsChange();
       
@@ -58,7 +58,7 @@ public class MenuInGameManager : MonoBehaviour
     public void MusicChange()
     {
         float numVolume = musicSlider.value;
-        musicaText.SetText(Mathf.RoundToInt(numVolume).ToString());
+        musicaText.SetText(Mathf.RoundToInt(numVolume+80).ToString());
         PlayerPrefs.SetFloat("volumenSonido", numVolume);
         masterMixer.SetFloat("Musica", numVolume);
     }
@@ -71,7 +71,7 @@ public class MenuInGameManager : MonoBehaviour
     public void EffectsChange()
     {
         float numVolume = efectosSlider.value;
-        efectosText.SetText(Mathf.RoundToInt(numVolume).ToString());
+        efectosText.SetText(Mathf.RoundToInt(numVolume+80).ToString());
         PlayerPrefs.SetFloat("volumenEfectos", numVolume);
         masterMixer.SetFloat("Efectos", numVolume);
     }

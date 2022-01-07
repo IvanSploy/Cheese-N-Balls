@@ -10,7 +10,7 @@ public class DamageCheeseBehaviour : MonoBehaviour
 {
 
     private AudioSource audioSource;
-    public AudioMixer mixer;
+    
 
 
     private MenuInGameManager menuInGameManager;
